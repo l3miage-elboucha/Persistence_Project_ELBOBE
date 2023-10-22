@@ -4,24 +4,56 @@
 			"shape": 
 {
     "type": "square",
-    "x": 84.0,
-    "y": 180.0
+    "x": 192,
+    "y": 119
 }
 		},
 		{
 			"shape": 
 {
     "type": "square",
-    "x": 24.0,
-    "y": 135.0
+    "x": 192,
+    "y": 118
 }
 		},
 		{
 			"shape": 
 {
-    "type": "circle",
-    "x": 241.0,
-    "y": 207.0
+    "type": "square",
+    "x": 257,
+    "y": 38
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 257,
+    "y": 38
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 90,
+    "y": 61
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 286,
+    "y": 201
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 286,
+    "y": 201
 }
 		}
 	]

@@ -162,16 +162,17 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
             XMLOutputFactory factory = XMLOutputFactory.newInstance();
             XMLStreamWriter xmlWriter = factory.createXMLStreamWriter(writer);
             xmlWriter.writeStartDocument();
+            xmlWriter.writeCharacters("\n");
             xmlWriter.writeStartElement("dessin");
 
             for (SimpleShape shape : listOfShapes) {
                 if (shape instanceof Visitable visitable) {
                     visitable.accept(xmlVisitor);
-                    xmlWriter.writeCharacters(xmlVisitor.getRepresentation());
-                    xmlWriter.writeCharacters("\n");
+                    xmlWriter.writeCharacters("\n\t");
+                    writer.write(xmlVisitor.getRepresentation());
                 }
             }
-
+            xmlWriter.writeCharacters("\n");
             xmlWriter.writeEndElement();
             xmlWriter.writeEndDocument();
 
