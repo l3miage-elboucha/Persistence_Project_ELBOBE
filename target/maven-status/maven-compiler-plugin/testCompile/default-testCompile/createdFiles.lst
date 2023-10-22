@@ -1,3 +1,5 @@
-JDrawingFrameTest.class
-CircleTesting.class
+CircleTestCase.class
+TriangleTestCase.class
+SquareTestCase.class
 VisitorTest.class
+JDrawingFrameTest.class

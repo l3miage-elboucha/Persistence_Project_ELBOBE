@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TriangleTesting {
+class TriangleTestCase {
     @Test
     @DisplayName("Test de la methode getX() de la classe Triangle")
-    public void testGetX() {
+    void testGetX() {
         System.out.println("getX");
         Triangle instance = new Triangle(15, 15);
         int expResult = 15 - 25;
@@ -17,7 +17,7 @@ public class TriangleTesting {
 
     @Test
     @DisplayName("Test de la methode getY() de la classe Triangle")
-    public void testGetY() {
+    void testGetY() {
         System.out.println("getY");
         Triangle instance = new Triangle(15, 15);
         int expResult = 15 - 25;

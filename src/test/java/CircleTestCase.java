@@ -9,11 +9,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CircleTesting {
+
+class CircleTestCase {
 
     @Test
     @DisplayName("Test de la m�thode getX() de la classe Circle")
-    public void testGetX() {
+    void testGetX() {
         System.out.println("getX");
         Circle instance = new Circle(5, 5);
         int expResult = 5 - 25;
@@ -23,7 +24,7 @@ public class CircleTesting {
 
     @Test
     @DisplayName("Test de la m�thode getY() de la classe Circle")
-    public void testGetY() {
+    void testGetY() {
         System.out.println("getY");
         Circle instance = new Circle(5, 5);
         int expResult = 5 - 25;
@@ -33,7 +34,7 @@ public class CircleTesting {
 
     @Test
     @DisplayName("Test de la m�thode accept() avec JSON de la classe Circle")
-    public void testAcceptJSON() {
+    void testAcceptJSON() {
         System.out.println("accept");
         Circle instance = new Circle(5, 5);
         JSonVisitor visitor = new JSonVisitor();
@@ -49,7 +50,7 @@ public class CircleTesting {
 
     @Test
     @DisplayName("Test de la m�thode accept() avec XML de la classe Circle")
-    public void testAcceptXML() {
+    void testAcceptXML() {
         System.out.println("accept");
         Circle instance = new Circle(5, 5);
         XMLVisitor visitor = new XMLVisitor();

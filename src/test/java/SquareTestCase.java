@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SquareTesting {
+class SquareTestCase {
     @Test
     @DisplayName("Test de la methode getX() de la classe Square")
-    public void testGetX() {
+    void testGetX() {
         System.out.println("getX");
         Square instance = new Square(15, 15);
         int expResult = 15 - 25;
@@ -17,7 +17,7 @@ public class SquareTesting {
 
     @Test
     @DisplayName("Test de la methode getY() de la classe Square")
-    public void testGetY() {
+    void testGetY() {
         System.out.println("getY");
         Square instance = new Square(15, 15);
         int expResult = 15 - 25;
