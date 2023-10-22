@@ -157,7 +157,7 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
         });
     }
 
-    private void exportToXML() {
+    public void exportToXML() {
         try (FileWriter writer = new FileWriter("dessin.xml")) {
             XMLOutputFactory factory = XMLOutputFactory.newInstance();
             XMLStreamWriter xmlWriter = factory.createXMLStreamWriter(writer);
@@ -181,7 +181,7 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
         }
     }
 
-    private void exportToJSON() {
+    public void exportToJSON() {
         try (FileWriter writer = new FileWriter("dessin.json")) {
             writer.write("{\n\t\"shapes\": [\n\t");
             Iterator<SimpleShape> iterator = listOfShapes.iterator();

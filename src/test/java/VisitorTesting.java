@@ -1,5 +1,3 @@
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
@@ -14,93 +12,93 @@ import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
 class VisitorTest {
 
     @Test
-    @DisplayName("Test visit Circle")
-    void testJsonVisitCircle() {
+    @DisplayName("Test Circle JSONvisitor")
+    void testJsonVisitForCircle() {
         Circle circle = new Circle(26, 26);
-        JSonVisitor visitor = new JSonVisitor();
+        JSonVisitor visiteur = new JSonVisitor();
 
-        visitor.visit(circle);
+        visiteur.visit(circle);
 
-        String expected = "{\n" +
+        String expectedResult = "{\n" +
                 "    \"type\": \"circle\",\n" +
                 "    \"x\": 1,\n" +
                 "    \"y\": 1\n" +
                 "}";
-        String actual = visitor.getRepresentation();
-        assertEquals(expected, actual);
+        String result = visiteur.getRepresentation();
+        assertEquals(expectedResult, result);
     }
 
     @Test
-    @DisplayName("Test visit square")
+    @DisplayName("Test Square JSONvisitor")
     void testJsonVisitSquare() {
         Square square = new Square(27, 27);
         JSonVisitor visitor = new JSonVisitor();
 
         visitor.visit(square);
 
-        String expected = "{\n" +
+        String expectedResult = "{\n" +
                 "    \"type\": \"square\",\n" +
                 "    \"x\": 2,\n" +
                 "    \"y\": 2\n" +
                 "}";
-        String actual = visitor.getRepresentation();
-        assertEquals(expected, actual);
+        String result = visitor.getRepresentation();
+        assertEquals(expectedResult, result);
     }
 
     @Test
-    @DisplayName("Test visit triangle")
+    @DisplayName("Test Triangle JSONvisitor")
     void testJsonVisitTriangle() {
         Triangle triangle = new Triangle(25, 25);
         JSonVisitor visitor = new JSonVisitor();
 
         visitor.visit(triangle);
 
-        String expected = "{\n" +
+        String expectedResult = "{\n" +
                 "    \"type\": \"triangle\",\n" +
                 "    \"x\": 0,\n" +
                 "    \"y\": 0\n" +
                 "}";
-        String actual = visitor.getRepresentation();
-        assertEquals(expected, actual);
+        String result = visitor.getRepresentation();
+        assertEquals(expectedResult, result);
     }
 
     @Test
-    @DisplayName("Test visit Circle xml")
+    @DisplayName("Test Circle XMLvisitor")
     void testXmlVisitCircle() {
         Circle circle = new Circle(25, 25);
         XMLVisitor visitor = new XMLVisitor();
 
         visitor.visit(circle);
 
-        String expected = "<shape><type>circle</type><x>0</x><y>0</y></shape>";
-        String actual = visitor.getRepresentation();
-        assertEquals(expected, actual);
+        String expectedResult = "<shape><type>circle</type><x>0</x><y>0</y></shape>";
+        String result = visitor.getRepresentation();
+        assertEquals(expectedResult, result);
     }
 
     @Test
-    @DisplayName("Test visit Square xml")
+    @DisplayName("Test Square XMLvisitor")
     void testXmlVisitSquare() {
         Square square = new Square(26,26);
         XMLVisitor visitor = new XMLVisitor();
 
         visitor.visit(square);
 
-        String expected = "<shape><type>square</type><x>1</x><y>1</y></shape>";
-        String actual = visitor.getRepresentation();
-        assertEquals(expected, actual);
+        String expectedResult = "<shape><type>square</type><x>1</x><y>1</y></shape>";
+        String result = visitor.getRepresentation();
+        assertEquals(expectedResult, result);
     }
 
     @Test
-    @DisplayName("Test visit Triangle xml")
+    @DisplayName("Test Triangle XMLvisitor")
     void testXmlVisitTriangle() {
         Triangle triangle = new Triangle(27,27);
         XMLVisitor visitor = new XMLVisitor();
 
         visitor.visit(triangle);
 
-        String expected = "<shape><type>triangle</type><x>2</x><y>2</y></shape>";
-        String actual = visitor.getRepresentation();
-        assertEquals(expected, actual);
+        String expectedResult = "<shape><type>triangle</type><x>2</x><y>2</y></shape>";
+        String result = visitor.getRepresentation();
+        assertEquals(expectedResult, result);
     }
 
 }
