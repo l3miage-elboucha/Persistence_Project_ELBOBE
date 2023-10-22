@@ -1,4 +1,4 @@
-package edu.uga.miage.m1.polygons.gui.test.java;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,15 +16,15 @@ class VisitorTest {
     @Test
     @DisplayName("Test visit Circle")
     void testJsonVisitCircle() {
-        Circle circle = new Circle(25, 25);
+        Circle circle = new Circle(26, 26);
         JSonVisitor visitor = new JSonVisitor();
 
         visitor.visit(circle);
 
         String expected = "{\n" +
                 "    \"type\": \"circle\",\n" +
-                "    \"x\": 0,\n" +
-                "    \"y\": 0\n" +
+                "    \"x\": 1,\n" +
+                "    \"y\": 1\n" +
                 "}";
         String actual = visitor.getRepresentation();
         assertEquals(expected, actual);
@@ -33,15 +33,15 @@ class VisitorTest {
     @Test
     @DisplayName("Test visit square")
     void testJsonVisitSquare() {
-        Square square = new Square(25, 25);
+        Square square = new Square(27, 27);
         JSonVisitor visitor = new JSonVisitor();
 
         visitor.visit(square);
 
         String expected = "{\n" +
                 "    \"type\": \"square\",\n" +
-                "    \"x\": 0,\n" +
-                "    \"y\": 0\n" +
+                "    \"x\": 2,\n" +
+                "    \"y\": 2\n" +
                 "}";
         String actual = visitor.getRepresentation();
         assertEquals(expected, actual);
@@ -80,12 +80,12 @@ class VisitorTest {
     @Test
     @DisplayName("Test visit Square xml")
     void testXmlVisitSquare() {
-        Square square = new Square(25,25);
+        Square square = new Square(26,26);
         XMLVisitor visitor = new XMLVisitor();
 
         visitor.visit(square);
 
-        String expected = "<shape><type>square</type><x>0</x><y>0</y></shape>";
+        String expected = "<shape><type>square</type><x>1</x><y>1</y></shape>";
         String actual = visitor.getRepresentation();
         assertEquals(expected, actual);
     }
@@ -93,12 +93,12 @@ class VisitorTest {
     @Test
     @DisplayName("Test visit Triangle xml")
     void testXmlVisitTriangle() {
-        Triangle triangle = new Triangle(25,25);
+        Triangle triangle = new Triangle(27,27);
         XMLVisitor visitor = new XMLVisitor();
 
         visitor.visit(triangle);
 
-        String expected = "<shape><type>triangle</type><x>0</x><y>0</y></shape>";
+        String expected = "<shape><type>triangle</type><x>2</x><y>2</y></shape>";
         String actual = visitor.getRepresentation();
         assertEquals(expected, actual);
     }

@@ -1,4 +1,4 @@
-package edu.uga.miage.m1.polygons.gui.test.java;
+
 
 
 import edu.uga.miage.m1.polygons.gui.persistence.JSonVisitor;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CircleTesting {
 
     @Test
-    @DisplayName("Test de la méthode getX() de la classe Circle")
+    @DisplayName("Test de la mï¿½thode getX() de la classe Circle")
     public void testGetX() {
         System.out.println("getX");
         Circle instance = new Circle(5, 5);
@@ -22,7 +22,7 @@ public class CircleTesting {
     }
 
     @Test
-    @DisplayName("Test de la méthode getY() de la classe Circle")
+    @DisplayName("Test de la mï¿½thode getY() de la classe Circle")
     public void testGetY() {
         System.out.println("getY");
         Circle instance = new Circle(5, 5);
@@ -32,7 +32,7 @@ public class CircleTesting {
     }
 
     @Test
-    @DisplayName("Test de la méthode accept() avec JSON de la classe Circle")
+    @DisplayName("Test de la mï¿½thode accept() avec JSON de la classe Circle")
     public void testAcceptJSON() {
         System.out.println("accept");
         Circle instance = new Circle(5, 5);
@@ -48,7 +48,7 @@ public class CircleTesting {
     }
 
     @Test
-    @DisplayName("Test de la méthode accept() avec XML de la classe Circle")
+    @DisplayName("Test de la mï¿½thode accept() avec XML de la classe Circle")
     public void testAcceptXML() {
         System.out.println("accept");
         Circle instance = new Circle(5, 5);
