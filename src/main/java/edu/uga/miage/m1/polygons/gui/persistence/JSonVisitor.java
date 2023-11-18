@@ -3,6 +3,7 @@ package edu.uga.miage.m1.polygons.gui.persistence;
 import edu.uga.miage.m1.polygons.gui.shapes.Circle;
 import edu.uga.miage.m1.polygons.gui.shapes.Square;
 import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 
 /**
  * @author <a href=
@@ -30,6 +31,11 @@ public class JSonVisitor implements Visitor {
     @Override
     public void visit(Triangle triangle) {
         this.representation = jsonGeneratorForShapes("triangle", triangle.getX(), triangle.getY());
+    }
+
+    @Override
+    public void visit(Cube cube) {
+        this.representation = jsonGeneratorForShapes("cube", cube.getX(), cube.getY());
     }
 
     // logique de génération de de Json pour les 3 figures

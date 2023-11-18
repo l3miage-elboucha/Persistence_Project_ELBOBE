@@ -3,6 +3,7 @@
 import edu.uga.miage.m1.polygons.gui.shapes.Circle;
 import edu.uga.miage.m1.polygons.gui.shapes.Square;
 import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 
 /**
  * @author &lt;a href=
@@ -10,30 +11,35 @@ import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
  */
 public class XMLVisitor implements Visitor {
 
-<span class="fc" id="L13">    private String representation = null;</span>
+<span class="fc" id="L14">    private String representation = null;</span>
 
-<span class="fc" id="L15">    public XMLVisitor() {</span>
+<span class="fc" id="L16">    public XMLVisitor() {</span>
         // empty pour le moment
 
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L19">    }</span>
 
     @Override
     public void visit(Circle circle) {
-<span class="fc" id="L22">        representation = generateShapeXML(&quot;circle&quot;, circle.getX(), circle.getY());</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L23">        representation = generateShapeXML(&quot;circle&quot;, circle.getX(), circle.getY());</span>
+<span class="fc" id="L24">    }</span>
 
     @Override
     public void visit(Square square) {
-<span class="fc" id="L27">        representation = generateShapeXML(&quot;square&quot;, square.getX(), square.getY());</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L28">        representation = generateShapeXML(&quot;square&quot;, square.getX(), square.getY());</span>
+<span class="fc" id="L29">    }</span>
 
     @Override
     public void visit(Triangle triangle) {
-<span class="fc" id="L32">        representation = generateShapeXML(&quot;triangle&quot;, triangle.getX(), triangle.getY());</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L33">        representation = generateShapeXML(&quot;triangle&quot;, triangle.getX(), triangle.getY());</span>
+<span class="fc" id="L34">    }</span>
+
+    @Override
+    public void visit(Cube cube) {
+<span class="nc" id="L38">        representation = generateShapeXML(&quot;cube&quot;, cube.getX(), cube.getY());</span>
+<span class="nc" id="L39">    }</span>
 
     private String generateShapeXML(String type, int x, int y) {
-<span class="fc" id="L36">        return String.format(&quot;&lt;shape&gt;&lt;type&gt;%s&lt;/type&gt;&lt;x&gt;%d&lt;/x&gt;&lt;y&gt;%d&lt;/y&gt;&lt;/shape&gt;&quot;, type, x, y);</span>
+<span class="fc" id="L42">        return String.format(&quot;&lt;shape&gt;&lt;type&gt;%s&lt;/type&gt;&lt;x&gt;%d&lt;/x&gt;&lt;y&gt;%d&lt;/y&gt;&lt;/shape&gt;&quot;, type, x, y);</span>
     }
 
     /**
@@ -50,7 +56,7 @@ public class XMLVisitor implements Visitor {
      * &lt;/pre&gt;
      */
     public String getRepresentation() {
-<span class="fc" id="L53">        return representation;</span>
+<span class="fc" id="L59">        return representation;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

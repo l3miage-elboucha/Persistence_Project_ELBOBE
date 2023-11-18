@@ -47,6 +47,7 @@ import edu.uga.miage.m1.polygons.gui.persistence.JSonVisitor;
 import edu.uga.miage.m1.polygons.gui.persistence.Visitable;
 import edu.uga.miage.m1.polygons.gui.persistence.XMLVisitor;
 import edu.uga.miage.m1.polygons.gui.shapes.Circle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
 import edu.uga.miage.m1.polygons.gui.shapes.Square;
 import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
@@ -62,7 +63,7 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
 
     private enum Shapes {
 
-        SQUARE, TRIANGLE, CIRCLE
+        SQUARE, TRIANGLE, CIRCLE, CUBE
     }
 
     private static final long serialVersionUID = 1L;
@@ -126,6 +127,11 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
         URL circleImageUrl = getClass().getResource("images/circle.png");
         if (circleImageUrl != null) {
             addShape(Shapes.CIRCLE, new ImageIcon(circleImageUrl));
+        }
+
+        URL cubeImageUrl = getClass().getResource("images/underc.png");
+        if (cubeImageUrl != null) {
+            addShape(Shapes.CUBE, new ImageIcon(cubeImageUrl));
         }
 
         setPreferredSize(new Dimension(450, 450));
@@ -252,6 +258,11 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
                     Square sqr = new Square(evt.getX(), evt.getY());
                     sqr.draw(g2);
                     listOfShapes.add(sqr);
+                    break;
+                case CUBE:
+                    Cube cbe = new Cube(180, evt.getX(), evt.getY());
+                    cbe.draw(g2);
+                    listOfShapes.add(cbe);
                     break;
                 default:
             }

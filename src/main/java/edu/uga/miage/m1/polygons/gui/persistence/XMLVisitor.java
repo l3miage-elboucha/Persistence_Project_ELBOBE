@@ -3,6 +3,7 @@ package edu.uga.miage.m1.polygons.gui.persistence;
 import edu.uga.miage.m1.polygons.gui.shapes.Circle;
 import edu.uga.miage.m1.polygons.gui.shapes.Square;
 import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 
 /**
  * @author <a href=
@@ -30,6 +31,11 @@ public class XMLVisitor implements Visitor {
     @Override
     public void visit(Triangle triangle) {
         representation = generateShapeXML("triangle", triangle.getX(), triangle.getY());
+    }
+
+    @Override
+    public void visit(Cube cube) {
+        representation = generateShapeXML("cube", cube.getX(), cube.getY());
     }
 
     private String generateShapeXML(String type, int x, int y) {

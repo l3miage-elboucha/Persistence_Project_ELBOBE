@@ -9,6 +9,7 @@ edu\uga\miage\m1\polygons\gui\shapes\SimpleShape.class
 edu\uga\miage\m1\polygons\gui\persistence\Visitor.class
 edu\uga\miage\m1\polygons\gui\shapes\Circle.class
 edu\uga\miage\m1\polygons\gui\command\RevokeControl.class
+edu\uga\miage\m1\polygons\gui\shapes\Cube.class
 edu\uga\miage\m1\polygons\gui\persistence\JSonVisitor.class
 edu\uga\miage\m1\polygons\gui\persistence\XMLVisitor.class
 edu\uga\miage\m1\polygons\gui\JDrawingFrame$1.class

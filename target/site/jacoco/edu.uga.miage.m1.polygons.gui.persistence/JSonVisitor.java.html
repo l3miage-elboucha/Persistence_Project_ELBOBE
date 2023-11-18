@@ -3,6 +3,7 @@
 import edu.uga.miage.m1.polygons.gui.shapes.Circle;
 import edu.uga.miage.m1.polygons.gui.shapes.Square;
 import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 
 /**
  * @author &lt;a href=
@@ -10,31 +11,36 @@ import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
  */
 public class JSonVisitor implements Visitor {
 
-<span class="fc" id="L13">    private String representation = null;</span>
+<span class="fc" id="L14">    private String representation = null;</span>
 
-<span class="fc" id="L15">    public JSonVisitor() {</span>
+<span class="fc" id="L16">    public JSonVisitor() {</span>
         // empty pour le moment
 
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L19">    }</span>
 
     @Override
     public void visit(Circle circle) {
-<span class="fc" id="L22">        this.representation = jsonGeneratorForShapes(&quot;circle&quot;, circle.getX(), circle.getY());</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L23">        this.representation = jsonGeneratorForShapes(&quot;circle&quot;, circle.getX(), circle.getY());</span>
+<span class="fc" id="L24">    }</span>
 
     @Override
     public void visit(Square square) {
-<span class="fc" id="L27">        this.representation = jsonGeneratorForShapes(&quot;square&quot;, square.getX(), square.getY());</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L28">        this.representation = jsonGeneratorForShapes(&quot;square&quot;, square.getX(), square.getY());</span>
+<span class="fc" id="L29">    }</span>
 
     @Override
     public void visit(Triangle triangle) {
-<span class="fc" id="L32">        this.representation = jsonGeneratorForShapes(&quot;triangle&quot;, triangle.getX(), triangle.getY());</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L33">        this.representation = jsonGeneratorForShapes(&quot;triangle&quot;, triangle.getX(), triangle.getY());</span>
+<span class="fc" id="L34">    }</span>
+
+    @Override
+    public void visit(Cube cube) {
+<span class="nc" id="L38">        this.representation = jsonGeneratorForShapes(&quot;cube&quot;, cube.getX(), cube.getY());</span>
+<span class="nc" id="L39">    }</span>
 
     // logique de gÃ©nÃ©ration de de Json pour les 3 figures
     private String jsonGeneratorForShapes(String type, int x, int y) {
-<span class="fc" id="L37">        return &quot;{\n&quot; +</span>
+<span class="fc" id="L43">        return &quot;{\n&quot; +</span>
                 &quot;    \&quot;type\&quot;: \&quot;&quot; + type + &quot;\&quot;,\n&quot; +
                 &quot;    \&quot;x\&quot;: &quot; + x + &quot;,\n&quot; +
                 &quot;    \&quot;y\&quot;: &quot; + y + &quot;\n&quot; +
@@ -57,7 +63,7 @@ public class JSonVisitor implements Visitor {
      *         &lt;/pre&gt;
      */
     public String getRepresentation() {
-<span class="fc" id="L60">        return representation;</span>
+<span class="fc" id="L66">        return representation;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

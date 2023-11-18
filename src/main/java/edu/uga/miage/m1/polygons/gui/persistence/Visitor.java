@@ -3,6 +3,7 @@ package edu.uga.miage.m1.polygons.gui.persistence;
 import edu.uga.miage.m1.polygons.gui.shapes.Circle;
 import edu.uga.miage.m1.polygons.gui.shapes.Square;
 import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 
 /**
  * You must define a method for each type of Visitable.
@@ -13,4 +14,5 @@ public interface Visitor {
 	public void visit(Circle circle);
 	public void visit(Square square);
 	public void visit(Triangle triangle);
+	public void visit(Cube cube);
 }
