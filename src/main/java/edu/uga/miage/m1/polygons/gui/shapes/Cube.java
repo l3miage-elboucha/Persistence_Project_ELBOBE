@@ -24,14 +24,11 @@ import edu.uga.singleshape.CubePanel;
 
 public class Cube implements SimpleShape, Visitable {
 
-    int mt;
-
     int mX;
 
     int mY;
 
-    public Cube(int t, int x, int y) {
-        mt = t;
+    public Cube(int x, int y) {
         mX = x - 25;
         mY = y - 25;
     }
@@ -42,18 +39,13 @@ public class Cube implements SimpleShape, Visitable {
      * @param g2 The graphics object used for painting.
      */
     public void draw(Graphics2D g2) {
-        Graphics2D g2d = g2;
-        CubePanel cube = new CubePanel(mt, mX, mY);
-        cube.paintComponent(g2d);
+        CubePanel cube = new CubePanel(50, mX, mY);
+        cube.paintComponent(g2);
     }
 
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
-    }
-
-    public int getT() {
-        return mt;
     }
 
     public int getX() {

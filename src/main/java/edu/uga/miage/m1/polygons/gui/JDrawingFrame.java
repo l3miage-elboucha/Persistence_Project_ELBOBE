@@ -28,7 +28,6 @@ import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,17 +39,10 @@ import javax.swing.SwingConstants;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
-import edu.uga.miage.m1.polygons.gui.command.Command;
-import edu.uga.miage.m1.polygons.gui.command.Revoke;
-import edu.uga.miage.m1.polygons.gui.command.RevokeControl;
 import edu.uga.miage.m1.polygons.gui.persistence.JSonVisitor;
 import edu.uga.miage.m1.polygons.gui.persistence.Visitable;
 import edu.uga.miage.m1.polygons.gui.persistence.XMLVisitor;
-import edu.uga.miage.m1.polygons.gui.shapes.Circle;
-import edu.uga.miage.m1.polygons.gui.shapes.Cube;
 import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
-import edu.uga.miage.m1.polygons.gui.shapes.Square;
-import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
 
 /**
  * This class represents the main application class, which is a JFrame subclass
@@ -59,9 +51,9 @@ import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
  * @author <a href=
  * "mailto:christophe.saint-marcel@univ-grenoble-alpes.fr">Christophe</a>
  */
-public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionListener {
+public class JDrawingFrame extends JFrame {
 
-    private enum Shapes {
+    public enum Shapes {
 
         SQUARE, TRIANGLE, CIRCLE, CUBE
     }
@@ -81,9 +73,6 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
     private final transient ActionListener mReusableActionListener = new ShapeActionListener();
     private final List<SimpleShape> listOfShapes = new ArrayList<>();
     private static final Logger LOGGER = Logger.getLogger(JDrawingFrame.class.getName());
-    private final transient Command revoke = new Revoke(this);
-
-    private final transient RevokeControl revoker = new RevokeControl(revoke);
 
     /**
      * Tracks buttons to manage the background.
@@ -95,7 +84,7 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
      *
      * @param frameName est un String
      */
-    public JDrawingFrame(String frameName) {
+    public JDrawingFrame(String frameName, TheClient theClient) {
         super(frameName);
         // Instantiates components
         mtoolbar = new JToolBar("Toolbar");
@@ -103,8 +92,8 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
         mPanel.setBackground(Color.WHITE);
         mPanel.setLayout(null);
         mPanel.setMinimumSize(new Dimension(400, 400));
-        mPanel.addMouseListener(this);
-        mPanel.addMouseMotionListener(this);
+        mPanel.addMouseListener(theClient);
+        mPanel.addMouseMotionListener(theClient);
         mLabel = new JLabel(" ", SwingConstants.LEFT);
         // Fills the panel
         setLayout(new BorderLayout());
@@ -115,23 +104,23 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
         URL squareImageUrl = getClass().getResource("images/square.png");
         if (squareImageUrl != null) {
 
-            addShape(Shapes.SQUARE, new ImageIcon(squareImageUrl));
+            addShapeButton(Shapes.SQUARE, new ImageIcon(squareImageUrl));
         }
         // Triangle
         URL triangleImageUrl = getClass().getResource("images/triangle.png");
         if (triangleImageUrl != null) {
-            addShape(Shapes.TRIANGLE, new ImageIcon(triangleImageUrl));
+            addShapeButton(Shapes.TRIANGLE, new ImageIcon(triangleImageUrl));
         }
 
         // Circle
         URL circleImageUrl = getClass().getResource("images/circle.png");
         if (circleImageUrl != null) {
-            addShape(Shapes.CIRCLE, new ImageIcon(circleImageUrl));
+            addShapeButton(Shapes.CIRCLE, new ImageIcon(circleImageUrl));
         }
 
         URL cubeImageUrl = getClass().getResource("images/underc.png");
         if (cubeImageUrl != null) {
-            addShape(Shapes.CUBE, new ImageIcon(cubeImageUrl));
+            addShapeButton(Shapes.CUBE, new ImageIcon(cubeImageUrl));
         }
 
         setPreferredSize(new Dimension(450, 450));
@@ -150,17 +139,19 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
 
         JButton undoButton = new JButton("Undo");
         mtoolbar.add(undoButton);
-        undoButton.addActionListener(e -> revoker.undo());
 
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
-            if (e.getID() == KeyEvent.KEY_PRESSED
-                    && e.getKeyCode() == KeyEvent.VK_Z
-                    && (e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) != 0) {
-                // Handle Ctrl + Z action
-                keyPressed(e);
-            }
-            return false; // Continue processing the event
-        });
+    }
+
+    public Shapes getSelectedShape() {
+        return mSelected;
+    }
+
+    public JLabel getLabel() {
+        return mLabel;
+    }
+
+    public JPanel getPanel() {
+        return mPanel;
     }
 
     public void exportToXML() {
@@ -220,7 +211,7 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
      * @param shape The name of the injected <tt>SimpleShape</tt>.
      * @param icon  The icon associated with the injected <tt>SimpleShape</tt>.
      */
-    private void addShape(Shapes shape, ImageIcon icon) {
+    private void addShapeButton(Shapes shape, ImageIcon icon) {
         JButton button = new JButton(icon);
         button.setBorderPainted(false);
         mButtons.put(shape, button);
@@ -234,104 +225,29 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
         repaint();
     }
 
-    /**
-     * Implements method for the <tt>MouseListener</tt> interface to
-     * draw the selected shape into the drawing canvas.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mouseClicked(MouseEvent evt) {
-        if (mPanel.contains(evt.getX(), evt.getY())) {
-            Graphics2D g2 = (Graphics2D) mPanel.getGraphics();
-            switch (mSelected) {
-                case CIRCLE:
-                    Circle crc = new Circle(evt.getX(), evt.getY());
-                    crc.draw(g2);
-                    listOfShapes.add(crc);
-                    break;
-                case TRIANGLE:
-                    Triangle trg = new Triangle(evt.getX(), evt.getY());
-                    trg.draw(g2);
-                    listOfShapes.add(trg);
-                    break;
-                case SQUARE:
-                    Square sqr = new Square(evt.getX(), evt.getY());
-                    sqr.draw(g2);
-                    listOfShapes.add(sqr);
-                    break;
-                case CUBE:
-                    Cube cbe = new Cube(180, evt.getX(), evt.getY());
-                    cbe.draw(g2);
-                    listOfShapes.add(cbe);
-                    break;
-                default:
-            }
+    @Override
+    public void paintComponents(Graphics g) {
+        Graphics2D newGraph = (Graphics2D) mPanel.getGraphics();
+        newGraph.setColor(Color.WHITE);
+        newGraph.fillRect(0, 0, mPanel.getWidth(), mPanel.getHeight());
+        for (SimpleShape simpleShape : listOfShapes) {
+            simpleShape.draw((Graphics2D) this.mPanel.getGraphics());
         }
     }
 
-    /**
-     * Implements an empty method for the <tt>MouseListener</tt> interface.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mouseEntered(MouseEvent evt) {
-        // empty pour le moment
+    public void addShape(SimpleShape shape) {
+        shape.draw((Graphics2D) mPanel.getGraphics());
+        listOfShapes.add(shape);
     }
 
-    /**
-     * Implements an empty method for the <tt>MouseListener</tt> interface.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mouseExited(MouseEvent evt) {
-        mLabel.setText(" ");
-        mLabel.repaint();
+    public void removeShape(SimpleShape shape) {
+        if (!listOfShapes.isEmpty()) {
+            listOfShapes.remove(shape);
+        }
+        paintComponents(getGraphics());
     }
 
-    /**
-     * Implements method for the <tt>MouseListener</tt> interface to initiate
-     * shape dragging.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mousePressed(MouseEvent evt) {
-        // empty pour le moment
-    }
-
-    /**
-     * Implements method for the <tt>MouseListener</tt> interface to complete
-     * shape dragging.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mouseReleased(MouseEvent evt) {
-        // empty pour le moment
-    }
-
-    /**
-     * Implements method for the <tt>MouseMotionListener</tt> interface to
-     * move a dragged shape.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mouseDragged(MouseEvent evt) {
-        // empty pour le moment
-
-    }
-
-    /**
-     * Implements an empty method for the <tt>MouseMotionListener</tt>
-     * interface.
-     *
-     * @param evt The associated mouse event.
-     */
-    public void mouseMoved(MouseEvent evt) {
-        modifyLabel(evt);
-    }
-
-    private void modifyLabel(MouseEvent evt) {
-        mLabel.setText("(" + evt.getX() + "," + evt.getY() + ")");
-    }
+    
 
     /**
      * Simple action listener for shape toolbar buttons that sets
@@ -356,26 +272,5 @@ public class JDrawingFrame extends JFrame implements MouseListener, MouseMotionL
 
         }
     }
-
-    public void withdraw() {
-        if (!listOfShapes.isEmpty()) {
-            listOfShapes.remove(listOfShapes.size() - 1);
-        }
-
-        Graphics2D newGraph = (Graphics2D) mPanel.getGraphics();
-        newGraph.setColor(Color.WHITE);
-        newGraph.fillRect(0, 0, mPanel.getWidth(), mPanel.getHeight());
-        for (SimpleShape shape : listOfShapes) {
-            shape.draw(newGraph);
-        }
-
-    }
-
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_Z && e.isControlDown()) {
-            revoker.undo();
-        }
-    }
-
 
 }
