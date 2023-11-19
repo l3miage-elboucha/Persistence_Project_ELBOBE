@@ -17,8 +17,10 @@ public class TheInvoker {
         if (!this.commandes.isEmpty()) {
             Command c = this.commandes.get(this.commandes.size() - 1);
             c.execute();
-            this.commandes.remove(c);
-            this.historyOfCommands.add(c);
+            if(c.isDone()){
+                this.commandes.remove(c);
+                this.historyOfCommands.add(c);
+            }
         }
     }
 

@@ -9,6 +9,8 @@ public class Add implements Command {
 
     private SimpleShape shape;
 
+    private boolean done = true;
+
     public Add(JDrawingFrame frame, SimpleShape shape) {
         this.frame = frame;
         this.shape = shape;
@@ -17,6 +19,15 @@ public class Add implements Command {
     @Override
     public void execute() {
         this.frame.addShape(this.shape);
+    }
+
+    @Override
+    public void setDone(boolean d){
+        this.done = d;
+    }
+
+    public boolean isDone(){
+        return done;
     }
 
     @Override

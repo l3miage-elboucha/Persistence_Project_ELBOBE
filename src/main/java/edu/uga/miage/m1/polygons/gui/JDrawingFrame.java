@@ -150,6 +150,10 @@ public class JDrawingFrame extends JFrame {
         return mLabel;
     }
 
+    public List<SimpleShape> getListOfShapes() {
+        return listOfShapes;
+    }
+
     public JPanel getPanel() {
         return mPanel;
     }

@@ -71,8 +71,8 @@ public class Circle implements SimpleShape, Visitable {
 
     @Override
     public void drag(int newX, int newY) {
-        mX += newX;
-        mY += newY;
+        mX = newX;
+        mY = newY;
     }
 
     @Override

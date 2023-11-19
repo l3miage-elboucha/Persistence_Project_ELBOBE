@@ -29,8 +29,8 @@ public class Cube implements SimpleShape, Visitable {
     int mY;
 
     public Cube(int x, int y) {
-        mX = x - 25;
-        mY = y - 25;
+        mX = x;
+        mY = y;
     }
 
     /**
@@ -60,8 +60,8 @@ public class Cube implements SimpleShape, Visitable {
 
     @Override
     public void drag(int newX, int newY) {
-        mX += newX;
-        mY += newY;
+        mX = newX;
+        mY = newY;
     }
 
     @Override

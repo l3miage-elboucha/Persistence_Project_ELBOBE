@@ -5,4 +5,7 @@ public interface Command {
     public void execute();
 
     public void undo();
+
+    public boolean isDone();
+    public void setDone(boolean done);
 }

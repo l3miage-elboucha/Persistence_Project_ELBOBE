@@ -15,6 +15,8 @@ public class Move implements Command {
     private int newX;
     private int newY;
 
+    private boolean done;
+
     private SimpleShape shape;
     private JDrawingFrame frame;
 
@@ -25,10 +27,18 @@ public class Move implements Command {
         this.frame = frame;
     }
 
+    public void setNewX(int newX) {
+        this.newX = newX;
+    }
+
+    public void setNewY(int newY) {
+        this.newY = newY;
+    }
+
     @Override
     public void undo() {
         shape.dragBack(oldX, oldY);
-        frame.repaint();
+        frame.paintComponents(frame.getGraphics());
     }
 
     @Override
@@ -36,4 +46,11 @@ public class Move implements Command {
         shape.drag(newX, newY);
     }
 
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 }
