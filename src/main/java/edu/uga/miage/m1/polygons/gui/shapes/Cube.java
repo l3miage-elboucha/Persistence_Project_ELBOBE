@@ -48,11 +48,26 @@ public class Cube implements SimpleShape, Visitable {
         visitor.visit(this);
     }
 
+    @Override
     public int getX() {
         return mX;
     }
 
+    @Override
     public int getY() {
         return mY;
     }
+
+    @Override
+    public void drag(int newX, int newY) {
+        mX += newX;
+        mY += newY;
+    }
+
+    @Override
+    public void dragBack(int oldX, int oldY) {
+        mX = oldX;
+        mY = oldY;
+    }
+    
 }

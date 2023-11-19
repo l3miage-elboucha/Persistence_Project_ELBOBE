@@ -21,4 +21,8 @@ public interface SimpleShape
     int getX();
     
     int getY();
+
+    void drag(int newX, int newY);
+
+    void dragBack(int oldX, int oldY);
 }
