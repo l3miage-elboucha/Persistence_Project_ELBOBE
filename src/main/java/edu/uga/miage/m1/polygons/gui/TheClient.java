@@ -108,8 +108,8 @@ public class TheClient implements MouseListener, MouseMotionListener{
         for (SimpleShape shape : mFrame.getListOfShapes()) {
             int mX = shape.getX();
             int mY = shape.getY();
-            Ellipse2D SimpleShape = new Ellipse2D.Double(mX,mY , 50, 50);
-            if (SimpleShape.contains(pressedX, pressedY)) {
+            Ellipse2D simpleShape = new Ellipse2D.Double(mX,mY , 50, 50);
+            if (simpleShape.contains(pressedX, pressedY)) {
                 chosenShape = shape;
                 Command mCom = new Move(mX, mY , shape, mFrame);
                 invoker.addCommand(mCom);
