@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 import edu.uga.miage.m1.polygons.gui.JDrawingFrame;
+import edu.uga.miage.m1.polygons.gui.TheClient;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
@@ -7,10 +9,12 @@ import java.io.File;
 import java.io.FileReader;
 
 class JDrawingFrameTest {
+    
+    private TheClient client = new TheClient("Test Frame");
 
     @Test
     void testExportToXML() {
-        JDrawingFrame drawingFrame = new JDrawingFrame("Test Frame");
+        JDrawingFrame drawingFrame = new JDrawingFrame("Test Frame", client);
 
         // Trigger the exportToXML method
         drawingFrame.exportToXML();
@@ -39,7 +43,7 @@ class JDrawingFrameTest {
 
     @Test
     void testExportToJSON() {
-        JDrawingFrame drawingFrame = new JDrawingFrame("Test Frame");
+        JDrawingFrame drawingFrame = new JDrawingFrame("Test Frame", client);
 
         // Trigger the exportToJSON method
         drawingFrame.exportToJSON();

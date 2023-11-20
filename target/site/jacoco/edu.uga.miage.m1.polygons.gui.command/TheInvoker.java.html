@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TheInvoker.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">persistence_g1_3</a> &gt; <a href="index.source.html" class="el_package">edu.uga.miage.m1.polygons.gui.command</a> &gt; <span class="el_source">TheInvoker.java</span></div><h1>TheInvoker.java</h1><pre class="source lang-java linenums">package edu.uga.miage.m1.polygons.gui.command;
+
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="fc" id="L6">public class TheInvoker {</span>
+    
+<span class="fc" id="L8">    private final List&lt;Command&gt; commandes = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L10">    private final List&lt;Command&gt; historyOfCommands = new ArrayList&lt;&gt;();</span>
+
+    public void addCommand(Command commande) {
+<span class="nc" id="L13">        this.commandes.add(commande);</span>
+<span class="nc" id="L14">    }</span>
+
+    public void execute() {
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (!this.commandes.isEmpty()) {</span>
+<span class="nc" id="L18">            Command c = this.commandes.get(this.commandes.size() - 1);</span>
+<span class="nc" id="L19">            c.execute();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">            if(c.isDone()){</span>
+<span class="nc" id="L21">                this.commandes.remove(c);</span>
+<span class="nc" id="L22">                this.historyOfCommands.add(c);</span>
+            }
+        }
+<span class="nc" id="L25">    }</span>
+
+    public void undo() {
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if (!this.historyOfCommands.isEmpty()) {</span>
+<span class="nc" id="L29">            Command c = this.historyOfCommands.get(this.historyOfCommands.size() - 1);</span>
+<span class="nc" id="L30">            c.undo();</span>
+<span class="nc" id="L31">            this.historyOfCommands.remove(c);</span>
+<span class="nc" id="L32">            this.commandes.add(c);</span>
+        }
+<span class="nc" id="L34">    }</span>
+
+    public Command getCommand() {
+<span class="nc" id="L37">        return this.commandes.get(this.commandes.size() - 1);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
