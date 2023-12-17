@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="VisitorTest" time="0.037" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="VisitorTest" time="0.021" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="18"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\test-classes;C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\classes;C:\Users\elbou\.m2\repository\org\glassfish\javax.json\1.1.4\javax.json-1.1.4.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\elbou\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\elbou\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-commons\1.4.0\junit-platform-commons-1.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.0\junit-jupiter-api-5.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\elbou\.m2\repository\edu\uga\miage\m1\edu.uga.singleshape\1.0.1\edu.uga.singleshape-1.0.1.jar;C:\Users\elbou\.m2\repository\edu\uga\miage\m1\drawingio\1.0.1\drawingio-1.0.1.jar;"/>
+    <property name="java.class.path" value="C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\test-classes;C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\classes;C:\Users\elbou\.m2\repository\org\glassfish\javax.json\1.1.4\javax.json-1.1.4.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\elbou\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\elbou\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-commons\1.4.0\junit-platform-commons-1.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.0\junit-jupiter-api-5.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\elbou\.m2\repository\edu\uga\miage\m1\edu.uga.singleshape\1.0.1\edu.uga.singleshape-1.0.1.jar;C:\Users\elbou\.m2\repository\com\anasat\anasat\1.0-SNAPSHOT\anasat-1.0-SNAPSHOT.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-18.0.2.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\elbou\AppData\Local\Temp\surefire11198053465529473258\surefirebooter2146494591813145769.jar C:\Users\elbou\AppData\Local\Temp\surefire11198053465529473258 2023-12-17T16-19-51_475-jvmRun1 surefire17824229857896640833tmp surefire_07694703824357383077tmp"/>
+    <property name="sun.java.command" value="C:\Users\elbou\AppData\Local\Temp\surefire2300377388222931949\surefirebooter1467113724649522196.jar C:\Users\elbou\AppData\Local\Temp\surefire2300377388222931949 2023-12-17T21-34-51_566-jvmRun1 surefire5844894089806745122tmp surefire_010549769557330447305tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\test-classes;C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\classes;C:\Users\elbou\.m2\repository\org\glassfish\javax.json\1.1.4\javax.json-1.1.4.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\elbou\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\elbou\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-commons\1.4.0\junit-platform-commons-1.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.0\junit-jupiter-api-5.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\elbou\.m2\repository\edu\uga\miage\m1\edu.uga.singleshape\1.0.1\edu.uga.singleshape-1.0.1.jar;C:\Users\elbou\.m2\repository\edu\uga\miage\m1\drawingio\1.0.1\drawingio-1.0.1.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\test-classes;C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3\target\classes;C:\Users\elbou\.m2\repository\org\glassfish\javax.json\1.1.4\javax.json-1.1.4.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\elbou\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\elbou\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\elbou\.m2\repository\org\junit\platform\junit-platform-commons\1.4.0\junit-platform-commons-1.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.0\junit-jupiter-api-5.4.0.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\elbou\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\elbou\.m2\repository\edu\uga\miage\m1\edu.uga.singleshape\1.0.1\edu.uga.singleshape-1.0.1.jar;C:\Users\elbou\.m2\repository\com\anasat\anasat\1.0-SNAPSHOT\anasat-1.0-SNAPSHOT.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\elbou"/>
     <property name="user.language" value="fr"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\elbou\AppData\Local\Temp\surefire11198053465529473258\surefirebooter2146494591813145769.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\elbou\AppData\Local\Temp\surefire2300377388222931949\surefirebooter1467113724649522196.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="18.0.2.1+1-1"/>
@@ -43,7 +43,6 @@
     <property name="localRepository" value="C:\Users\elbou\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\elbou\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2022.3.3"/>
     <property name="java.version" value="18.0.2.1"/>
     <property name="user.dir" value="C:\Users\elbou\Documents\M1MIAGE\PC\persistence_g1_3_V2\persistence_g1_3"/>
     <property name="os.arch" value="amd64"/>
@@ -57,10 +56,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="62.0"/>
   </properties>
-  <testcase name="testXmlVisitTriangle" classname="VisitorTest" time="0.004"/>
-  <testcase name="testJsonVisitTriangle" classname="VisitorTest" time="0.004"/>
-  <testcase name="testJsonVisitForCircle" classname="VisitorTest" time="0.004"/>
-  <testcase name="testXmlVisitCircle" classname="VisitorTest" time="0.002"/>
-  <testcase name="testJsonVisitSquare" classname="VisitorTest" time="0.002"/>
+  <testcase name="testXmlVisitTriangle" classname="VisitorTest" time="0.001"/>
+  <testcase name="testJsonVisitTriangle" classname="VisitorTest" time="0.001"/>
+  <testcase name="testJsonVisitForCircle" classname="VisitorTest" time="0.002"/>
+  <testcase name="testXmlVisitCircle" classname="VisitorTest" time="0.003"/>
+  <testcase name="testJsonVisitSquare" classname="VisitorTest" time="0.001"/>
   <testcase name="testXmlVisitSquare" classname="VisitorTest" time="0.002"/>
 </testsuite>

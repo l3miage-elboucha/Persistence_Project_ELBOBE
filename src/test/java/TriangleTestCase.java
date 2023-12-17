@@ -1,4 +1,4 @@
-import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import com.anasat.shapes.Triangle;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

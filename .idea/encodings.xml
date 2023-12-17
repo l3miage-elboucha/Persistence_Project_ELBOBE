@@ -4,6 +4,14 @@
     <file url="file://$PROJECT_DIR$/src/main/java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/iodrawing" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/iodrawing/DrawingIO.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/persistence/Visitable.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/persistence/Visitor.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/persistence/XMLVisitor.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/shapes/Circle.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/shapes/Cube.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/shapes/SimpleShape.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/shapes/Square.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/uga/miage/m1/polygons/gui/shapes/Triangle.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="ISO-8859-1" />
   </component>
 </project>

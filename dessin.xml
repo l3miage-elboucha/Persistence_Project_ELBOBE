@@ -6,4 +6,5 @@
 	<shape><type>triangle</type><x>488</x><y>47</y></shape>
 	<shape><type>square</type><x>198</x><y>87</y></shape>
 	<shape><type>square</type><x>319</x><y>127</y></shape>
+	<shape><type>cube</type><x>171</x><y>210</y></shape>
 </dessin>

@@ -3,65 +3,57 @@
 			{
 			"shape": 
 {
-    "type": "square",
-    "x": 109,
-    "y": 32
-}
-		},
-		{
-			"shape": 
-{
-    "type": "square",
-    "x": 161,
-    "y": 124
-}
-		},
-		{
-			"shape": 
-{
-    "type": "square",
-    "x": 15,
-    "y": 145
+    "type": "circle",
+    "x": 164,
+    "y": 41
 }
 		},
 		{
 			"shape": 
 {
     "type": "circle",
-    "x": 202,
-    "y": 19
-}
-		},
-		{
-			"shape": 
-{
-    "type": "circle",
-    "x": 280,
-    "y": 96
+    "x": 129,
+    "y": 69
 }
 		},
 		{
 			"shape": 
 {
     "type": "triangle",
-    "x": 21,
-    "y": 28
+    "x": 465,
+    "y": 47
 }
 		},
 		{
 			"shape": 
 {
     "type": "triangle",
-    "x": 352,
-    "y": 16
+    "x": 488,
+    "y": 47
 }
 		},
 		{
 			"shape": 
 {
-    "type": "triangle",
-    "x": 391,
-    "y": 104
+    "type": "square",
+    "x": 198,
+    "y": 87
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 319,
+    "y": 127
+}
+		},
+		{
+			"shape": 
+{
+    "type": "cube",
+    "x": 171,
+    "y": 210
 }
 		}
 	]

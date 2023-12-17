@@ -12,11 +12,7 @@ import edu.uga.miage.m1.polygons.gui.command.Add;
 import edu.uga.miage.m1.polygons.gui.command.Command;
 import edu.uga.miage.m1.polygons.gui.command.Move;
 import edu.uga.miage.m1.polygons.gui.command.TheInvoker;
-import edu.uga.miage.m1.polygons.gui.shapes.Circle;
-import edu.uga.miage.m1.polygons.gui.shapes.Cube;
-import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
-import edu.uga.miage.m1.polygons.gui.shapes.Square;
-import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import com.anasat.shapes.*;
 import edu.uga.miage.m1.polygons.gui.JDrawingFrame.Shapes;
 
 public class TheClient implements MouseListener, MouseMotionListener{
@@ -25,23 +21,23 @@ public class TheClient implements MouseListener, MouseMotionListener{
 
     private SimpleShape chosenShape;
 
-<span class="nc" id="L28">    private TheInvoker invoker = new TheInvoker();</span>
+<span class="nc" id="L24">    private TheInvoker invoker = new TheInvoker();</span>
 
-<span class="nc" id="L30">    public TheClient(String frameName) {</span>
-<span class="nc" id="L31">        this.mFrame = new JDrawingFrame(frameName, this);</span>
-<span class="nc" id="L32">        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -&gt; {</span>
-<span class="nc bnc" id="L33" title="All 2 branches missed.">            if (e.getID() == KeyEvent.KEY_PRESSED</span>
-<span class="nc bnc" id="L34" title="All 2 branches missed.">                    &amp;&amp; e.getKeyCode() == KeyEvent.VK_Z</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">                    &amp;&amp; (e.getModifiersEx() &amp; InputEvent.CTRL_DOWN_MASK) != 0) {</span>
+<span class="nc" id="L26">    public TheClient(String frameName) {</span>
+<span class="nc" id="L27">        this.mFrame = new JDrawingFrame(frameName, this);</span>
+<span class="nc" id="L28">        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -&gt; {</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">            if (e.getID() == KeyEvent.KEY_PRESSED</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">                    &amp;&amp; e.getKeyCode() == KeyEvent.VK_Z</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                    &amp;&amp; (e.getModifiersEx() &amp; InputEvent.CTRL_DOWN_MASK) != 0) {</span>
                 // Handle Ctrl + Z action
-<span class="nc" id="L37">                keyPressed(e);</span>
+<span class="nc" id="L33">                keyPressed(e);</span>
             }
-<span class="nc" id="L39">            return false; // Continue processing the event</span>
+<span class="nc" id="L35">            return false; // Continue processing the event</span>
         });
-<span class="nc" id="L41">    }</span>
+<span class="nc" id="L37">    }</span>
 
     public JDrawingFrame getFrame() {
-<span class="nc" id="L44">        return this.mFrame;</span>
+<span class="nc" id="L40">        return this.mFrame;</span>
     }
 
     /**
@@ -51,30 +47,30 @@ public class TheClient implements MouseListener, MouseMotionListener{
      * @param evt The associated mouse event.
      */
     public void mouseClicked(MouseEvent evt) {
-<span class="nc" id="L54">        Shapes shape = null;</span>
-<span class="nc" id="L55">        shape = mFrame.getSelectedShape();</span>
-<span class="nc" id="L56">        SimpleShape s = null;</span>
-<span class="nc bnc" id="L57" title="All 5 branches missed.">        switch (shape) {</span>
+<span class="nc" id="L50">        Shapes shape = null;</span>
+<span class="nc" id="L51">        shape = mFrame.getSelectedShape();</span>
+<span class="nc" id="L52">        SimpleShape s = null;</span>
+<span class="nc bnc" id="L53" title="All 5 branches missed.">        switch (shape) {</span>
             case SQUARE:
-<span class="nc" id="L59">                s = new Square(evt.getX(), evt.getY());</span>
-<span class="nc" id="L60">                break;</span>
+<span class="nc" id="L55">                s = new Square(evt.getX(), evt.getY());</span>
+<span class="nc" id="L56">                break;</span>
             case TRIANGLE:
-<span class="nc" id="L62">                s = new Triangle(evt.getX(), evt.getY());</span>
-<span class="nc" id="L63">                break;</span>
+<span class="nc" id="L58">                s = new Triangle(evt.getX(), evt.getY());</span>
+<span class="nc" id="L59">                break;</span>
             case CIRCLE:
-<span class="nc" id="L65">                s = new Circle(evt.getX(), evt.getY());</span>
-<span class="nc" id="L66">                break;</span>
+<span class="nc" id="L61">                s = new Circle(evt.getX(), evt.getY());</span>
+<span class="nc" id="L62">                break;</span>
             case CUBE:
-<span class="nc" id="L68">                s = new Cube(evt.getX(), evt.getY());</span>
-<span class="nc" id="L69">                break;</span>
+<span class="nc" id="L64">                s = new Cube(evt.getX(), evt.getY());</span>
+<span class="nc" id="L65">                break;</span>
             default:
                 break;
         }
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (s != null) {</span>
-<span class="nc" id="L74">            invoker.addCommand(new Add(mFrame, s));</span>
-<span class="nc" id="L75">            invoker.execute();</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (s != null) {</span>
+<span class="nc" id="L70">            invoker.addCommand(new Add(mFrame, s));</span>
+<span class="nc" id="L71">            invoker.execute();</span>
         }
-<span class="nc" id="L77">    }</span>
+<span class="nc" id="L73">    }</span>
 
     /**
      * Implements an empty method for the &lt;tt&gt;MouseListener&lt;/tt&gt; interface.
@@ -83,7 +79,7 @@ public class TheClient implements MouseListener, MouseMotionListener{
      */
     public void mouseEntered(MouseEvent evt) {
         // empty pour le moment
-<span class="nc" id="L86">    }</span>
+<span class="nc" id="L82">    }</span>
 
     /**
      * Implements an empty method for the &lt;tt&gt;MouseListener&lt;/tt&gt; interface.
@@ -91,9 +87,9 @@ public class TheClient implements MouseListener, MouseMotionListener{
      * @param evt The associated mouse event.
      */
     public void mouseExited(MouseEvent evt) {
-<span class="nc" id="L94">        mFrame.getLabel().setText(&quot; &quot;);</span>
-<span class="nc" id="L95">        mFrame.getLabel().repaint();</span>
-<span class="nc" id="L96">    }</span>
+<span class="nc" id="L90">        mFrame.getLabel().setText(&quot; &quot;);</span>
+<span class="nc" id="L91">        mFrame.getLabel().repaint();</span>
+<span class="nc" id="L92">    }</span>
 
     /**
      * Implements method for the &lt;tt&gt;MouseListener&lt;/tt&gt; interface to initiate
@@ -102,22 +98,22 @@ public class TheClient implements MouseListener, MouseMotionListener{
      * @param evt The associated mouse event.
      */
     public void mousePressed(MouseEvent evt) {
-<span class="nc" id="L105">        int pressedX = evt.getX();</span>
-<span class="nc" id="L106">        int pressedY = evt.getY();</span>
+<span class="nc" id="L101">        int pressedX = evt.getX();</span>
+<span class="nc" id="L102">        int pressedY = evt.getY();</span>
 
-<span class="nc bnc" id="L108" title="All 2 branches missed.">        for (SimpleShape shape : mFrame.getListOfShapes()) {</span>
-<span class="nc" id="L109">            int mX = shape.getX();</span>
-<span class="nc" id="L110">            int mY = shape.getY();</span>
-<span class="nc" id="L111">            Ellipse2D simpleShape = new Ellipse2D.Double(mX,mY , 50, 50);</span>
-<span class="nc bnc" id="L112" title="All 2 branches missed.">            if (simpleShape.contains(pressedX, pressedY)) {</span>
-<span class="nc" id="L113">                chosenShape = shape;</span>
-<span class="nc" id="L114">                Command mCom = new Move(mX, mY , shape, mFrame);</span>
-<span class="nc" id="L115">                invoker.addCommand(mCom);</span>
-<span class="nc" id="L116">                break;</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        for (SimpleShape shape : mFrame.getListOfShapes()) {</span>
+<span class="nc" id="L105">            int mX = shape.getX();</span>
+<span class="nc" id="L106">            int mY = shape.getY();</span>
+<span class="nc" id="L107">            Ellipse2D simpleShape = new Ellipse2D.Double(mX,mY , 50, 50);</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">            if (simpleShape.contains(pressedX, pressedY)) {</span>
+<span class="nc" id="L109">                chosenShape = shape;</span>
+<span class="nc" id="L110">                Command mCom = new Move(mX, mY , shape, mFrame);</span>
+<span class="nc" id="L111">                invoker.addCommand(mCom);</span>
+<span class="nc" id="L112">                break;</span>
             }
-<span class="nc" id="L118">        }</span>
+<span class="nc" id="L114">        }</span>
 
-<span class="nc" id="L120">    }</span>
+<span class="nc" id="L116">    }</span>
 
     /**
      * Implements method for the &lt;tt&gt;MouseListener&lt;/tt&gt; interface to complete
@@ -126,12 +122,12 @@ public class TheClient implements MouseListener, MouseMotionListener{
      * @param evt The associated mouse event.
      */
     public void mouseReleased(MouseEvent evt) {
-<span class="nc bnc" id="L129" title="All 2 branches missed.">        if(chosenShape != null){</span>
-<span class="nc" id="L130">            this.invoker.getCommand().setDone(true);</span>
-<span class="nc" id="L131">            this.invoker.execute();</span>
-<span class="nc" id="L132">            chosenShape = null;</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if(chosenShape != null){</span>
+<span class="nc" id="L126">            this.invoker.getCommand().setDone(true);</span>
+<span class="nc" id="L127">            this.invoker.execute();</span>
+<span class="nc" id="L128">            chosenShape = null;</span>
         }
-<span class="nc" id="L134">    }</span>
+<span class="nc" id="L130">    }</span>
 
     /**
      * Implements method for the &lt;tt&gt;MouseMotionListener&lt;/tt&gt; interface to
@@ -140,17 +136,17 @@ public class TheClient implements MouseListener, MouseMotionListener{
      * @param evt The associated mouse event.
      */
     public void mouseDragged(MouseEvent evt) {
-<span class="nc bnc" id="L143" title="All 2 branches missed.">        if(chosenShape != null){</span>
-<span class="nc" id="L144">            int newX = evt.getX();</span>
-<span class="nc" id="L145">            int newY = evt.getY();</span>
-<span class="nc" id="L146">            Move mCom = (Move) this.invoker.getCommand();</span>
-<span class="nc" id="L147">            mCom.setNewX(newX);</span>
-<span class="nc" id="L148">            mCom.setNewY(newY);</span>
-<span class="nc" id="L149">            this.invoker.execute();</span>
-<span class="nc" id="L150">            mFrame.paintComponents(mFrame.getGraphics());</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if(chosenShape != null){</span>
+<span class="nc" id="L140">            int newX = evt.getX();</span>
+<span class="nc" id="L141">            int newY = evt.getY();</span>
+<span class="nc" id="L142">            Move mCom = (Move) this.invoker.getCommand();</span>
+<span class="nc" id="L143">            mCom.setNewX(newX);</span>
+<span class="nc" id="L144">            mCom.setNewY(newY);</span>
+<span class="nc" id="L145">            this.invoker.execute();</span>
+<span class="nc" id="L146">            mFrame.paintComponents(mFrame.getGraphics());</span>
         }
 
-<span class="nc" id="L153">    }</span>
+<span class="nc" id="L149">    }</span>
 
     /**
      * Implements an empty method for the &lt;tt&gt;MouseMotionListener&lt;/tt&gt;
@@ -159,19 +155,19 @@ public class TheClient implements MouseListener, MouseMotionListener{
      * @param evt The associated mouse event.
      */
     public void mouseMoved(MouseEvent evt) {
-<span class="nc" id="L162">        modifyLabel(evt);</span>
-<span class="nc" id="L163">    }</span>
+<span class="nc" id="L158">        modifyLabel(evt);</span>
+<span class="nc" id="L159">    }</span>
 
     private void modifyLabel(MouseEvent evt) {
-<span class="nc" id="L166">        mFrame.getLabel().setText(&quot;(&quot; + evt.getX() + &quot;,&quot; + evt.getY() + &quot;)&quot;);</span>
-<span class="nc" id="L167">        mFrame.getLabel().repaint();</span>
+<span class="nc" id="L162">        mFrame.getLabel().setText(&quot;(&quot; + evt.getX() + &quot;,&quot; + evt.getY() + &quot;)&quot;);</span>
+<span class="nc" id="L163">        mFrame.getLabel().repaint();</span>
 
-<span class="nc" id="L169">    }</span>
+<span class="nc" id="L165">    }</span>
 
     public void keyPressed(KeyEvent e) {
-<span class="nc bnc" id="L172" title="All 4 branches missed.">        if (e.getKeyCode() == KeyEvent.VK_Z &amp;&amp; e.isControlDown()) {</span>
-<span class="nc" id="L173">            invoker.undo();</span>
+<span class="nc bnc" id="L168" title="All 4 branches missed.">        if (e.getKeyCode() == KeyEvent.VK_Z &amp;&amp; e.isControlDown()) {</span>
+<span class="nc" id="L169">            invoker.undo();</span>
         }
-<span class="nc" id="L175">    }</span>
+<span class="nc" id="L171">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

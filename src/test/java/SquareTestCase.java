@@ -1,4 +1,4 @@
-import edu.uga.miage.m1.polygons.gui.shapes.Square;
+import com.anasat.shapes.Square;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

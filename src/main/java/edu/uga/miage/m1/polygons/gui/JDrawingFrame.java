@@ -35,8 +35,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import com.anasat.shapes.*;
-import com.anasat.iodrawing.*;
+import com.anasat.iodrawing.DrawingIO;
+import com.anasat.shapes.SimpleShape;
 
 /**
  * This class represents the main application class, which is a JFrame subclass
@@ -173,6 +173,9 @@ public class JDrawingFrame extends JFrame {
 
     @Override
     public void paintComponents(Graphics g) {
+        Graphics2D newGraph = (Graphics2D) mPanel.getGraphics();
+        newGraph.setColor(Color.WHITE);
+        newGraph.fillRect(0, 0, mPanel.getWidth(), mPanel.getHeight());
         for (SimpleShape simpleShape : listOfShapes) {
             simpleShape.draw((Graphics2D) this.mPanel.getGraphics());
         }
