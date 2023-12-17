@@ -11,6 +11,7 @@ edu\uga\miage\m1\polygons\gui\command\Move.class
 edu\uga\miage\m1\polygons\gui\shapes\Triangle.class
 edu\uga\miage\m1\polygons\gui\command\Command.class
 edu\uga\miage\m1\polygons\gui\command\TheInvoker.class
+edu\uga\miage\m1\polygons\gui\iodrawing\DrawingIO.class
 edu\uga\miage\m1\polygons\gui\TheClient$1.class
 edu\uga\miage\m1\polygons\gui\command\Add.class
 edu\uga\miage\m1\polygons\gui\persistence\Visitor.class

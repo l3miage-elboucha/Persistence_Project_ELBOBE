@@ -1,4 +1,68 @@
 {
 	"shapes": [
-		]
+			{
+			"shape": 
+{
+    "type": "square",
+    "x": 109,
+    "y": 32
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 161,
+    "y": 124
+}
+		},
+		{
+			"shape": 
+{
+    "type": "square",
+    "x": 15,
+    "y": 145
+}
+		},
+		{
+			"shape": 
+{
+    "type": "circle",
+    "x": 202,
+    "y": 19
+}
+		},
+		{
+			"shape": 
+{
+    "type": "circle",
+    "x": 280,
+    "y": 96
+}
+		},
+		{
+			"shape": 
+{
+    "type": "triangle",
+    "x": 21,
+    "y": 28
+}
+		},
+		{
+			"shape": 
+{
+    "type": "triangle",
+    "x": 352,
+    "y": 16
+}
+		},
+		{
+			"shape": 
+{
+    "type": "triangle",
+    "x": 391,
+    "y": 104
+}
+		}
+	]
 }

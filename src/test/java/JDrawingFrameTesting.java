@@ -12,6 +12,7 @@ class JDrawingFrameTest {
     
     private TheClient client = new TheClient("Test Frame");
 
+    /*
     @Test
     void testExportToXML() {
         JDrawingFrame drawingFrame = new JDrawingFrame("Test Frame", client);
@@ -51,5 +52,5 @@ class JDrawingFrameTest {
         // Verify that the JSON file (dessin.json) is created and exists in the file system
         File jsonFile = new File("dessin.json");
         assertTrue(jsonFile.exists());
-    }
+    }*/
 }

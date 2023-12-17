@@ -25,11 +25,11 @@ public class TheClient implements MouseListener, MouseMotionListener{
 
     private SimpleShape chosenShape;
 
-<span class="fc" id="L28">    private TheInvoker invoker = new TheInvoker();</span>
+<span class="nc" id="L28">    private TheInvoker invoker = new TheInvoker();</span>
 
-<span class="fc" id="L30">    public TheClient(String frameName) {</span>
-<span class="fc" id="L31">        this.mFrame = new JDrawingFrame(frameName, this);</span>
-<span class="fc" id="L32">        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -&gt; {</span>
+<span class="nc" id="L30">    public TheClient(String frameName) {</span>
+<span class="nc" id="L31">        this.mFrame = new JDrawingFrame(frameName, this);</span>
+<span class="nc" id="L32">        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -&gt; {</span>
 <span class="nc bnc" id="L33" title="All 2 branches missed.">            if (e.getID() == KeyEvent.KEY_PRESSED</span>
 <span class="nc bnc" id="L34" title="All 2 branches missed.">                    &amp;&amp; e.getKeyCode() == KeyEvent.VK_Z</span>
 <span class="nc bnc" id="L35" title="All 2 branches missed.">                    &amp;&amp; (e.getModifiersEx() &amp; InputEvent.CTRL_DOWN_MASK) != 0) {</span>
@@ -38,7 +38,7 @@ public class TheClient implements MouseListener, MouseMotionListener{
             }
 <span class="nc" id="L39">            return false; // Continue processing the event</span>
         });
-<span class="fc" id="L41">    }</span>
+<span class="nc" id="L41">    }</span>
 
     public JDrawingFrame getFrame() {
 <span class="nc" id="L44">        return this.mFrame;</span>

@@ -1,3 +1,7 @@
 <?xml version="1.0" ?>
 <dessin>
+	<shape><type>circle</type><x>164</x><y>41</y></shape>
+	<shape><type>circle</type><x>129</x><y>69</y></shape>
+	<shape><type>triangle</type><x>465</x><y>47</y></shape>
+	<shape><type>triangle</type><x>488</x><y>47</y></shape>
 </dessin>
