@@ -1,7 +1,7 @@
 package edu.uga.miage.m1.polygons.gui.command;
 
 import edu.uga.miage.m1.polygons.gui.JDrawingFrame;
-import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
+import com.anasat.shapes.*;
 
 public class Add implements Command {
     

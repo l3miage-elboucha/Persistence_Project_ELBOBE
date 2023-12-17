@@ -1,7 +1,7 @@
 package edu.uga.miage.m1.polygons.gui.command;
 
 import edu.uga.miage.m1.polygons.gui.JDrawingFrame;
-import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
+import com.anasat.shapes.*;
 
 /*each time we press a shape we have to get the shape and where it started and the frame
 and we need to add this move command to the command list.

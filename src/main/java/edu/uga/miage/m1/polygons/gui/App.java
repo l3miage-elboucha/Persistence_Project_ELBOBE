@@ -9,7 +9,6 @@ package edu.uga.miage.m1.polygons.gui;
  */
 public class App {
   public static void main(String[] args) {
-
     TheClient client = new TheClient("belligoaaaal");
     GUIHelper.showOnFrame(client);
   }

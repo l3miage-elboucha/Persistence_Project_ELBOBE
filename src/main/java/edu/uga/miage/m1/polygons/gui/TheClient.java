@@ -12,11 +12,7 @@ import edu.uga.miage.m1.polygons.gui.command.Add;
 import edu.uga.miage.m1.polygons.gui.command.Command;
 import edu.uga.miage.m1.polygons.gui.command.Move;
 import edu.uga.miage.m1.polygons.gui.command.TheInvoker;
-import edu.uga.miage.m1.polygons.gui.shapes.Circle;
-import edu.uga.miage.m1.polygons.gui.shapes.Cube;
-import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
-import edu.uga.miage.m1.polygons.gui.shapes.Square;
-import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+import com.anasat.shapes.*;
 import edu.uga.miage.m1.polygons.gui.JDrawingFrame.Shapes;
 
 public class TheClient implements MouseListener, MouseMotionListener{

@@ -35,8 +35,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
-import edu.uga.miage.m1.polygons.gui.iodrawing.DrawingIO;
+import com.anasat.shapes.*;
+import com.anasat.iodrawing.*;
 
 /**
  * This class represents the main application class, which is a JFrame subclass
