@@ -37,4 +37,12 @@ public class TheInvoker {
         return this.commandes.get(this.commandes.size() - 1);
     }
 
+    public List<Command> getCommandes() {
+        return this.commandes;
+    }
+
+    public List<Command> getHistoryOfCommands() {
+        return this.historyOfCommands;
+    }
+
 }

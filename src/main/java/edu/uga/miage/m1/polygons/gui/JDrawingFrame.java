@@ -20,7 +20,6 @@ package edu.uga.miage.m1.polygons.gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.logging.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -62,11 +61,10 @@ public class JDrawingFrame extends JFrame {
 
     private final JLabel mLabel;
 
-    private DrawingIO drawingIO = new DrawingIO();
+    private transient DrawingIO drawingIO = new DrawingIO();
 
     private final transient ActionListener mReusableActionListener = new ShapeActionListener();
     private final List<SimpleShape> listOfShapes = new ArrayList<>();
-    private static final Logger LOGGER = Logger.getLogger(JDrawingFrame.class.getName());
 
     /**
      * Tracks buttons to manage the background.
