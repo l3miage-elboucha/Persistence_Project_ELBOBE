@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DrawingIO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">persistence_g1_3</a> &gt; <a href="index.source.html" class="el_package">edu.uga.miage.m1.polygons.gui.iodrawing</a> &gt; <span class="el_source">DrawingIO.java</span></div><h1>DrawingIO.java</h1><pre class="source lang-java linenums">package edu.uga.miage.m1.polygons.gui.iodrawing;
+
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
+
+import edu.uga.miage.m1.polygons.gui.persistence.JSonVisitor;
+import edu.uga.miage.m1.polygons.gui.persistence.XMLVisitor;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import edu.uga.miage.m1.polygons.gui.persistence.Visitable;
+import edu.uga.miage.m1.polygons.gui.shapes.Circle;
+import edu.uga.miage.m1.polygons.gui.shapes.Cube;
+import edu.uga.miage.m1.polygons.gui.shapes.SimpleShape;
+import edu.uga.miage.m1.polygons.gui.shapes.Square;
+import edu.uga.miage.m1.polygons.gui.shapes.Triangle;
+
+public class DrawingIO {
+
+    private JFileChooser fileChooser;
+<span class="nc" id="L35">    private List&lt;SimpleShape&gt; importedShapes = new ArrayList&lt;&gt;();</span>
+    private final transient XMLVisitor xmlVisitor;
+    private final transient JSonVisitor jsonVisitor;
+<span class="nc" id="L38">    private static final Logger LOGGER = Logger.getLogger(DrawingIO.class.getName());</span>
+
+<span class="nc" id="L40">    public DrawingIO() {</span>
+<span class="nc" id="L41">        jsonVisitor = new JSonVisitor();</span>
+<span class="nc" id="L42">        xmlVisitor = new XMLVisitor();</span>
+<span class="nc" id="L43">        importedShapes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L44">        fileChooser = new JFileChooser();</span>
+<span class="nc" id="L45">    }</span>
+
+    public void exportToJSON(List&lt;SimpleShape&gt; shapesList) {
+<span class="nc" id="L48">        try (FileWriter writer = new FileWriter(&quot;dessin.json&quot;)) {</span>
+<span class="nc" id="L49">            writer.write(&quot;{\n\t\&quot;shapes\&quot;: [\n\t&quot;);</span>
+<span class="nc" id="L50">            Iterator&lt;SimpleShape&gt; iterator = shapesList.iterator();</span>
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">            while (iterator.hasNext()) {</span>
+<span class="nc" id="L53">                SimpleShape shape = iterator.next();</span>
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">                if (shape instanceof Visitable visitable) {</span>
+<span class="nc" id="L56">                    visitable.accept(jsonVisitor);</span>
+<span class="nc" id="L57">                    writer.write(&quot;\t\t{\n\t\t\t\&quot;shape\&quot;: \n&quot;);</span>
+<span class="nc" id="L58">                    writer.write(jsonVisitor.getRepresentation());</span>
+
+<span class="nc bnc" id="L60" title="All 2 branches missed.">                    if (iterator.hasNext()) {</span>
+<span class="nc" id="L61">                        writer.write(&quot;\n\t\t},\n&quot;);</span>
+                    } else {
+<span class="nc" id="L63">                        writer.write(&quot;\n\t\t}\n&quot;);</span>
+                    }
+                }
+<span class="nc" id="L66">            }</span>
+
+<span class="nc" id="L68">            writer.write(&quot;\t]\n}&quot;);</span>
+<span class="nc" id="L69">        } catch (Exception e) {</span>
+<span class="nc" id="L70">            LOGGER.log(Level.SEVERE, &quot;erreur:&quot;, e);</span>
+<span class="nc" id="L71">        }</span>
+<span class="nc" id="L72">    }</span>
+
+    // Check if the shape already exists in the XML file (to avoid duplicates)
+    private boolean shapeExistsInXML(SimpleShape shape, List&lt;SimpleShape&gt; shapesList) {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        for (SimpleShape existingShape : shapesList) {</span>
+            // Compare x and y coordinates to determine if the shape already exists
+<span class="nc bnc" id="L78" title="All 4 branches missed.">            if (existingShape.getX() == shape.getX() &amp;&amp; existingShape.getY() == shape.getY()) {</span>
+<span class="nc" id="L79">                return true; // Shape with the same coordinates already exists</span>
+            }
+<span class="nc" id="L81">        }</span>
+<span class="nc" id="L82">        return false; // Shape does not exist in the XML file</span>
+    }
+
+    public void exportToXML(List&lt;SimpleShape&gt; shapesList) {
+<span class="nc" id="L86">        try (FileWriter writer = new FileWriter(&quot;dessin.xml&quot;)) {</span>
+<span class="nc" id="L87">            XMLOutputFactory factory = XMLOutputFactory.newInstance();</span>
+<span class="nc" id="L88">            XMLStreamWriter xmlWriter = factory.createXMLStreamWriter(writer);</span>
+<span class="nc" id="L89">            xmlWriter.writeStartDocument();</span>
+<span class="nc" id="L90">            xmlWriter.writeCharacters(&quot;\n&quot;);</span>
+<span class="nc" id="L91">            xmlWriter.writeStartElement(&quot;dessin&quot;);</span>
+
+<span class="nc bnc" id="L93" title="All 2 branches missed.">            for (SimpleShape shape : shapesList) {</span>
+                // Check if the shape with the same x and y coordinates already exists in the XML file
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                    if (shape instanceof Visitable visitable) {</span>
+<span class="nc" id="L96">                        visitable.accept(xmlVisitor);</span>
+<span class="nc" id="L97">                        xmlWriter.writeCharacters(&quot;\n\t&quot;);</span>
+<span class="nc" id="L98">                        writer.write(xmlVisitor.getRepresentation());</span>
+                }
+<span class="nc" id="L100">            }</span>
+<span class="nc" id="L101">            xmlWriter.writeCharacters(&quot;\n&quot;);</span>
+<span class="nc" id="L102">            xmlWriter.writeEndElement();</span>
+<span class="nc" id="L103">            xmlWriter.writeEndDocument();</span>
+
+<span class="nc" id="L105">        } catch (Exception e) {</span>
+<span class="nc" id="L106">            LOGGER.log(Level.SEVERE, &quot;erreur:&quot;, e);</span>
+<span class="nc" id="L107">        }</span>
+<span class="nc" id="L108">    }</span>
+
+    public List&lt;SimpleShape&gt; importFromXML(String filePath, List&lt;SimpleShape&gt; drawnShapes) {
+<span class="nc" id="L111">        List&lt;SimpleShape&gt; importedShapes = new ArrayList&lt;&gt;();</span>
+
+        try {
+<span class="nc" id="L114">            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();</span>
+<span class="nc" id="L115">            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();</span>
+
+            // Load the XML document from the file
+<span class="nc" id="L118">            Document document = documentBuilder.parse(new File(filePath));</span>
+
+            // Get the &quot;dessin&quot; element
+<span class="nc" id="L121">            Element dessinElement = document.getDocumentElement();</span>
+
+            // Get the &quot;shape&quot; elements
+<span class="nc" id="L124">            NodeList shapeList = dessinElement.getElementsByTagName(&quot;shape&quot;);</span>
+
+            // Iterate over the &quot;shape&quot; elements
+<span class="nc bnc" id="L127" title="All 2 branches missed.">            for (int i = 0; i &lt; shapeList.getLength(); i++) {</span>
+<span class="nc" id="L128">                Node shapeNode = shapeList.item(i);</span>
+
+<span class="nc bnc" id="L130" title="All 2 branches missed.">                if (shapeNode.getNodeType() == Node.ELEMENT_NODE) {</span>
+<span class="nc" id="L131">                    Element shapeElement = (Element) shapeNode;</span>
+
+                    // Get the properties of the shape
+<span class="nc" id="L134">                    String type = shapeElement.getElementsByTagName(&quot;type&quot;).item(0).getTextContent();</span>
+<span class="nc" id="L135">                    int x = getIntegerContent(shapeElement, &quot;x&quot;) + 25;</span>
+<span class="nc" id="L136">                    int y = getIntegerContent(shapeElement, &quot;y&quot;) + 25;</span>
+
+                    // Create a SimpleShape instance
+<span class="nc" id="L139">                    SimpleShape shape = createShape(type, x, y);</span>
+
+                    // Check if the shape already exists in the drawnShapes list
+<span class="nc bnc" id="L142" title="All 2 branches missed.">                    if (!shapeExistsInList(shape, drawnShapes)) {</span>
+                        // Add the shape to the importedShapes list
+<span class="nc" id="L144">                        importedShapes.add(shape);</span>
+                    }
+                }
+            }
+<span class="nc" id="L148">        } catch (Exception e) {</span>
+<span class="nc" id="L149">            LOGGER.log(Level.SEVERE, &quot;Error:&quot;, e);</span>
+<span class="nc" id="L150">        }</span>
+
+<span class="nc" id="L152">        System.out.println(&quot;These are the imported shapes: &quot; + importedShapes);</span>
+<span class="nc" id="L153">        return importedShapes;</span>
+    }
+    private boolean shapeExistsInList(SimpleShape shape, List&lt;SimpleShape&gt; shapeList) {
+<span class="nc bnc" id="L156" title="All 2 branches missed.">        for (SimpleShape existingShape : shapeList) {</span>
+<span class="nc bnc" id="L157" title="All 4 branches missed.">            if (existingShape.getX() == shape.getX() &amp;&amp; existingShape.getY() == shape.getY()) {</span>
+<span class="nc" id="L158">                return true; // Shape with the same coordinates already exists in the list</span>
+            }
+<span class="nc" id="L160">        }</span>
+<span class="nc" id="L161">        return false; // Shape does not exist in the list</span>
+    }
+
+    public void showImportDialog(List&lt;SimpleShape&gt; shapesList) {
+<span class="nc" id="L165">        fileChooser.setCurrentDirectory(new File(&quot;.&quot;));</span>
+<span class="nc" id="L166">        fileChooser.setFileFilter(new FileNameExtensionFilter(&quot;XML files&quot;, &quot;xml&quot;));</span>
+<span class="nc" id="L167">        fileChooser.setDialogTitle(&quot;Choose an XML file&quot;);</span>
+<span class="nc" id="L168">        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);</span>
+<span class="nc" id="L169">        fileChooser.setAcceptAllFileFilterUsed(false);</span>
+
+<span class="nc" id="L171">        int result = fileChooser.showOpenDialog(null);</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">        if (result == JFileChooser.APPROVE_OPTION) {</span>
+<span class="nc" id="L173">            File selectedFile = fileChooser.getSelectedFile();</span>
+<span class="nc" id="L174">            String filePath = selectedFile.getAbsolutePath();</span>
+<span class="nc" id="L175">            importedShapes = importFromXML(filePath, shapesList);</span>
+            // Add the imported shapes to shapesList
+<span class="nc" id="L177">            shapesList.addAll(importedShapes);</span>
+        }
+<span class="nc" id="L179">    }</span>
+    
+    private int getIntegerContent(Element element, String tagName) {
+<span class="nc" id="L182">        return Integer.parseInt(element.getElementsByTagName(tagName).item(0).getTextContent());</span>
+    }
+    
+    private SimpleShape createShape(String type, int x, int y) {
+<span class="nc bnc" id="L186" title="All 4 branches missed.">        switch (type) {</span>
+            case &quot;circle&quot;:
+<span class="nc" id="L188">                return new Circle(x, y);</span>
+            case &quot;square&quot;:
+<span class="nc" id="L190">                return new Square(x, y);</span>
+            case &quot;triangle&quot;:
+<span class="nc" id="L192">                return new Triangle(x, y);</span>
+            default:
+<span class="nc" id="L194">                return new Cube(x, y);</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
